@@ -1,10 +1,11 @@
 (function( $ ) {
 
     function bonesCookieBannerCreateCookie( name, value, days ) {
-        var expires;
+        var expires,
+            date;
 
         if ( days ) {
-            var date = new Date();
+            date = new Date();
             date.setTime( date.getTime() + ( days * 24 * 60 * 60 * 1000 ) );
             expires = '; expires=' + date.toGMTString();
         } else {
