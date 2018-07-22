@@ -18,6 +18,10 @@
     width: 100%;
 }
 
+.bones-cookie-banner-content {
+    padding-right: 30px;
+}
+
 .bones-cookie-banner-content, .bones-cookie-banner-button {
     display: table-cell;
     vertical-align: middle;
