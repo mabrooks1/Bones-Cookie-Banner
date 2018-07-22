@@ -1,0 +1,24 @@
+.bones-cookie-banner {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    padding: 30px;
+}
+
+.bones-cookie-banner-top {
+    top: 0;
+}
+
+.bones-cookie-banner-bottom {
+    bottom: 0;
+}
+
+.bones-cookie-banner-wrapper {
+    display: table;
+    width: 100%;
+}
+
+.bones-cookie-banner-content, .bones-cookie-banner-button {
+    display: table-cell;
+    vertical-align: middle;
+}

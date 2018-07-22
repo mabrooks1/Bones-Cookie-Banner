@@ -16,6 +16,10 @@ if ( ! defined( 'BONES_COOKIE_BANNER_DIR' ) ) {
 	define( 'BONES_COOKIE_BANNER_DIR', trailingslashit( __DIR__ ) );
 }
 
+if ( ! defined( 'BONES_COOKIE_BANNER_DIR_NAME' ) ) {
+	define( 'BONES_COOKIE_BANNER_DIR_NAME', basename( __DIR__ ) );
+}
+
 require_once( BONES_COOKIE_BANNER_DIR . 'classes/class-bones-cookie-banner.php' );
 
 $bones_cookie_banner = new Bones_Cookie_Banner();

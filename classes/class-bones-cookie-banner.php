@@ -17,11 +17,17 @@
 class Bones_Cookie_Banner {
 
 	/**
+	 * Defines the plugin version.
+	 */
+	const VERSION = '0.1.0';
+
+	/**
 	 * Bones_Cookie_Banner constructor.
 	 */
 	public function __construct() {
 		add_action( 'wp_footer', array( $this, 'show_banner' ) );
 		add_action( 'customize_register', array( $this, 'register_customize_options' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ) );
 	}
 
 	/**
@@ -40,9 +46,9 @@ class Bones_Cookie_Banner {
 	 */
 	private function get_template( $file_name = '' ) {
 		if ( is_dir( get_template_directory() . '/templates' ) && is_file( get_template_directory() . '/templates/' . $file_name . '.php' ) ) {
-			return file_get_contents( get_template_directory() . '/templates/' . $file_name . '.php' );
+			include get_template_directory() . '/templates/' . $file_name . '.php';
 		} elseif ( file_exists( BONES_COOKIE_BANNER_DIR . 'templates/' . $file_name . '.php' ) ) {
-			return file_get_contents( BONES_COOKIE_BANNER_DIR . 'templates/' . $file_name . '.php' );
+			include BONES_COOKIE_BANNER_DIR . 'templates/' . $file_name . '.php';
 		} else {
 			return new WP_Error( 'broke', 'File: ' . $file_name . ' Not Found' );
 		}
@@ -59,7 +65,7 @@ class Bones_Cookie_Banner {
 		) );
 
 		$wp_customize->add_setting( 'cookie_banner_position', array(
-			'default' => 'top',
+			'default' => 'bottom',
 		) );
 
 		$wp_customize->add_control( new WP_Customize_Control(
@@ -79,7 +85,7 @@ class Bones_Cookie_Banner {
 		) );
 
 		$wp_customize->add_setting( 'cookie_banner_background_color', array(
-			'default' => '#ffffff',
+			'default' => '#000000',
 		) );
 
 		$wp_customize->add_control( new WP_Customize_Color_Control(
@@ -93,7 +99,7 @@ class Bones_Cookie_Banner {
 		) );
 
 		$wp_customize->add_setting( 'cookie_banner_text_color', array(
-			'default' => '#000000',
+			'default' => '#ffffff',
 		) );
 
 		$wp_customize->add_control( new WP_Customize_Color_Control(
@@ -111,9 +117,9 @@ class Bones_Cookie_Banner {
 		) );
 
 		$wp_customize->add_control( 'cookie_banner_content', array(
-			'label' => __( 'Cookie Banner Content' ),
+			'label'   => __( 'Cookie Banner Content' ),
 			'section' => 'cookie_banner', // // Add a default or your own section
-			'type' => 'textarea',
+			'type'    => 'textarea',
 		) );
 
 		$wp_customize->add_setting( 'cookie_banner_button_text', array(
@@ -121,9 +127,16 @@ class Bones_Cookie_Banner {
 		) );
 
 		$wp_customize->add_control( 'cookie_banner_button_text', array(
-			'label' => __( 'Cookie Banner Button Text' ),
+			'label'   => __( 'Cookie Banner Button Text' ),
 			'section' => 'cookie_banner', // // Add a default or your own section
-			'type' => 'text',
+			'type'    => 'text',
 		) );
+	}
+
+	/**
+	 * Register assets
+	 */
+	public function register_assets() {
+		wp_enqueue_style( 'bones-cookie-banner', plugins_url() . '/' . BONES_COOKIE_BANNER_DIR_NAME . '/assets/css/cookie-banner.css', '', self::VERSION );
 	}
 }
