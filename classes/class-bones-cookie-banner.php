@@ -19,7 +19,7 @@ class Bones_Cookie_Banner {
 	/**
 	 * Defines the plugin version.
 	 */
-	const VERSION = '0.1.0';
+	const VERSION = '0.1.1';
 
 	/**
 	 * Bones_Cookie_Banner constructor.
@@ -34,7 +34,7 @@ class Bones_Cookie_Banner {
 	 * Show Cookie Banner
 	 */
 	public function show_banner() {
-		if ( ! isset( $_COOKIE['cookie-banner-hide-banner'] ) ) {
+		if ( ! isset( $_COOKIE['cookie-banner-hide-banner'] ) || is_customize_preview() ) {
 			echo $this->get_template( 'cookie-banner' );
 		}
 	}

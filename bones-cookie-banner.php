@@ -5,7 +5,7 @@
  * Author:          Level Up Digital
  * Text Domain:     bones-cookie-banner
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         0.1.1
  *
  * @package         Bones_Cookie_Banner
  */
