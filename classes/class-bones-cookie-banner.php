@@ -66,7 +66,7 @@ class Bones_Cookie_Banner {
 			$wp_customize,
 			'cookie_banner_position',
 			array(
-				'label'    => __( 'Cookie Banner Position', 'Bones_Cookie_banner' ),
+				'label'    => __( 'Cookie Banner Position', 'Bones_Cookie_Banner' ),
 				'settings' => 'cookie_banner_position',
 				'priority' => 10,
 				'section'  => 'cookie_banner',
@@ -75,6 +75,19 @@ class Bones_Cookie_Banner {
 					'top'    => 'Top',
 					'bottom' => 'Bottom',
 				),
+			)
+		) );
+
+		$wp_customize->add_setting( 'cookie_banner_background_color', array(
+			'default' => '#ffffff',
+		) );
+
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize,
+			'cookie_banner_background_color',
+			array(
+				'title'    => __( 'Cookie Background Color', 'Bones_Cookie_Banner' ),
+				'settings' => 'cookie_banner_background_color',
 			)
 		) );
 	}
