@@ -19,7 +19,7 @@ class Bones_Cookie_Banner {
 	/**
 	 * Defines the plugin version.
 	 */
-	const VERSION = '0.1.1';
+	const VERSION = '0.1.2';
 
 	/**
 	 * Bones_Cookie_Banner constructor.
