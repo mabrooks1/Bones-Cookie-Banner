@@ -54,6 +54,28 @@ class Bones_Cookie_Banner {
 	 * @param WP_Customize_Manager $wp_customize The WP_Customize_Manager object.
 	 */
 	public function register_customize_options( $wp_customize ) {
+		$wp_customize->add_section( 'cookie_banner', array(
+			'title' => __( 'Cookie Banner', 'Bones_Cookie_Banner' ),
+		) );
 
+		$wp_customize->add_setting( 'cookie_banner_position', array(
+			'default' => 'top',
+		) );
+
+		$wp_customize->add_control( new WP_Customize_Control(
+			$wp_customize,
+			'cookie_banner_position',
+			array(
+				'label'    => __( 'Cookie Banner Position', 'Bones_Cookie_banner' ),
+				'settings' => 'cookie_banner_position',
+				'priority' => 10,
+				'section'  => 'cookie_banner',
+				'type'     => 'select',
+				'choices'  => array(
+					'top'    => 'Top',
+					'bottom' => 'Bottom',
+				),
+			)
+		) );
 	}
 }
