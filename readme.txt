@@ -1,4 +1,4 @@
-https://travis-ci.org/mabrooks1/Bones-Cookie-Banner.svg?branch=master
+[![Build Status](https://travis-ci.org/mabrooks1/Bones-Cookie-Banner.svg?branch=master)](https://travis-ci.org/mabrooks1/Bones-Cookie-Banner)
 
 === Bones Cookie Banner ===
 Contributors: (this should be a list of wordpress.org userid's)
