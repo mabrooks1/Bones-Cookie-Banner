@@ -1,3 +1,5 @@
+https://travis-ci.org/mabrooks1/Bones-Cookie-Banner.svg?branch=master
+
 === Bones Cookie Banner ===
 Contributors: (this should be a list of wordpress.org userid's)
 Donate link: https://example.com/
