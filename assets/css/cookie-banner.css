@@ -22,3 +22,9 @@
     display: table-cell;
     vertical-align: middle;
 }
+
+.bones-cookie-banner-button {
+    padding: 8px 10px;
+    text-align: center;
+    cursor: pointer;
+}

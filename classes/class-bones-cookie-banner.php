@@ -34,7 +34,9 @@ class Bones_Cookie_Banner {
 	 * Show Cookie Banner
 	 */
 	public function show_banner() {
-		echo $this->get_template( 'cookie-banner' );
+		if ( ! isset( $_COOKIE['cookie-banner-hide-banner'] ) ) {
+			echo $this->get_template( 'cookie-banner' );
+		}
 	}
 
 	/**
@@ -131,6 +133,34 @@ class Bones_Cookie_Banner {
 			'section' => 'cookie_banner', // // Add a default or your own section
 			'type'    => 'text',
 		) );
+
+		$wp_customize->add_setting( 'cookie_banner_button_background_color', array(
+			'default' => '#ffffff',
+		) );
+
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize,
+			'cookie_banner_button_background_color',
+			array(
+				'label'    => __( 'Cookie Button Background Color', 'Bones_Cookie_Banner' ),
+				'settings' => 'cookie_banner_button_background_color',
+				'section'  => 'cookie_banner',
+			)
+		) );
+
+		$wp_customize->add_setting( 'cookie_banner_button_text_color', array(
+			'default' => '#000000',
+		) );
+
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize,
+			'cookie_banner_button_text_color',
+			array(
+				'label'    => __( 'Cookie Button Text Color', 'Bones_Cookie_Banner' ),
+				'settings' => 'cookie_banner_button_text_color',
+				'section'  => 'cookie_banner',
+			)
+		) );
 	}
 
 	/**
@@ -138,5 +168,6 @@ class Bones_Cookie_Banner {
 	 */
 	public function register_assets() {
 		wp_enqueue_style( 'bones-cookie-banner', plugins_url() . '/' . BONES_COOKIE_BANNER_DIR_NAME . '/assets/css/cookie-banner.css', '', self::VERSION );
+		wp_enqueue_script( 'bones-cookie-banner', plugins_url() . '/' . BONES_COOKIE_BANNER_DIR_NAME . '/assets/js/cookie-banner.js', array( 'jquery' ), self::VERSION );
 	}
 }
